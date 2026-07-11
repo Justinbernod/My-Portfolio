@@ -148,4 +148,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ==========================================================================
+       Lightbox Modal for Dashboard Preview
+       ========================================================================== */
+    const dashboardImg = document.getElementById('dashboard-main-image');
+    const modal = document.getElementById('dashboard-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    const closeModal = document.querySelector('.close-modal');
+
+    if (dashboardImg && modal && modalImg) {
+        dashboardImg.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            modalImg.src = dashboardImg.src;
+            modalCaption.textContent = dashboardImg.alt;
+        });
+
+        const hideModal = () => {
+            modal.style.display = 'none';
+        };
+
+        closeModal.addEventListener('click', hideModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+
+        // Close on Escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideModal();
+            }
+        });
+    }
+
 });
