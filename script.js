@@ -149,26 +149,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       Lightbox Modal for Dashboard Preview
+       Lightbox Modal for Image Previews
        ========================================================================== */
-    const dashboardImg = document.getElementById('dashboard-main-image');
     const modal = document.getElementById('dashboard-modal');
     const modalImg = document.getElementById('modal-img');
     const modalCaption = document.getElementById('modal-caption');
     const closeModal = document.querySelector('.close-modal');
+    const triggers = document.querySelectorAll('.lightbox-trigger, #dashboard-main-image');
 
-    if (dashboardImg && modal && modalImg) {
-        dashboardImg.addEventListener('click', () => {
-            modal.style.display = 'flex';
-            modalImg.src = dashboardImg.src;
-            modalCaption.textContent = dashboardImg.alt;
+    if (modal && modalImg && triggers.length > 0) {
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = trigger.src;
+                modalCaption.textContent = trigger.alt;
+            });
         });
 
         const hideModal = () => {
             modal.style.display = 'none';
         };
 
-        closeModal.addEventListener('click', hideModal);
+        if (closeModal) {
+            closeModal.addEventListener('click', hideModal);
+        }
+        
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 hideModal();

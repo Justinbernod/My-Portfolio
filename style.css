@@ -1361,6 +1361,202 @@ footer {
 }
 
 /* ==========================================================================
+   Campaign Case Studies & Social Showcases Section
+   ========================================================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 1px 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.project-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+    cursor: zoom-in;
+}
+.project-img-wrapper.dual-images {
+    display: flex;
+    height: 320px;
+}
+
+.project-img-half {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-img-half:first-child {
+    border-right: 1px solid var(--border-color);
+}
+
+.project-img-wrapper.quad-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 320px;
+}
+
+.project-img-quad {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-img-quad:nth-child(2n) {
+    border-right: none;
+}
+
+.project-img-quad:nth-child(3),
+.project-img-quad:nth-child(4) {
+    border-bottom: none;
+}
+
+.text-link {
+    color: var(--accent-teal);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 4.5px;
+}
+
+.text-link:hover {
+    color: var(--accent-blue);
+    text-decoration: underline;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-smooth);
+}
+
+.project-zoom-hint {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(8, 12, 24, 0.75);
+    backdrop-filter: blur(4px);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    pointer-events: none;
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+}
+
+.project-img-wrapper:hover .project-img {
+    transform: scale(1.05);
+}
+
+.project-img-wrapper:hover .project-zoom-hint {
+    opacity: 1;
+}
+
+.project-body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.project-card-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.tag-instagram { background: rgba(225, 48, 108, 0.1); color: #e1306c; border: 1px solid rgba(225, 48, 108, 0.2); }
+.tag-philips { background: rgba(0, 102, 204, 0.1); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.2); }
+.tag-3ding { background: rgba(243, 156, 18, 0.1); color: #f39c12; border: 1px solid rgba(243, 156, 18, 0.2); }
+.tag-nexulus { background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.2); }
+
+.project-body h3 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.project-role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+    margin-bottom: 16px;
+}
+
+.project-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-bullets {
+    list-style: none;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.project-bullets li {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.project-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-teal);
+    font-weight: bold;
+}
+
+.project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    width: 100%;
+}
+
+/* ==========================================================================
    Responsive Breakpoints / Media Queries
    ========================================================================== */
 
@@ -1461,7 +1657,7 @@ footer {
         top: 0;
     }
 
-    .creative-grid, .clients-grid, .contact-grid, .tools-grid-categories, .dashboard-showcase-grid {
+    .creative-grid, .clients-grid, .contact-grid, .tools-grid-categories, .dashboard-showcase-grid, .projects-grid {
         grid-template-columns: 1fr;
     }
 
